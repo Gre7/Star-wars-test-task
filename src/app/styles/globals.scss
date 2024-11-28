@@ -1,0 +1,37 @@
+// Global styles
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 16px;
+  scrollbar-color: var(--chakra-colors-brand-neutral-300);
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 0.25rem;
+  height: 0.25rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--chakra-colors-white);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: var(--chakra-colors-brand-neutral-300);
+}
+
+main {
+  flex: 1;
+}
+
+a {
+  outline: none;
+  color: inherit;
+  text-decoration: none;
+}
