@@ -1,10 +1,30 @@
 import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
-import { themeTokens } from "./tokens";
+
+export const colors = {
+  colors: {
+    success: {
+      DEFAULT: { value: "#3EB521" },
+    },
+    error: {
+      DEFAULT: { value: "#E64646" },
+    },
+  },
+};
 
 export const config = defineConfig({
   theme: {
     tokens: {
-      ...themeTokens,
+      ...colors,
+    },
+    breakpoints: {
+      base: "0",
+      bp360: "360px",
+      bp580: "580px",
+      bp768: "768px",
+      bp1024: "1024px",
+      bp1280: "1280px",
+      bp1440: "1440px",
+      bp1920: "1920px",
     },
   },
   globalCss: {

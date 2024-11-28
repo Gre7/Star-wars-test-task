@@ -5,6 +5,7 @@ import { Providers } from "@/app/providers";
 import { Viewport } from "next";
 
 import "./styles/globals.scss";
+import Header from "@/widgets/Header/Header";
 
 interface Props {
   readonly children: ReactNode;
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: Props) {
     <html lang="en" suppressHydrationWarning>
       <body className={karlaFont.className}>
         <Providers>
+          <Header />
           <main>{children}</main>
         </Providers>
       </body>

@@ -5,6 +5,7 @@ const path = require("path");
 
 const nextConfig = {
   reactStrictMode: true,
+  trailingSlash: true,
   experimental: {
     optimizePackageImports: ["@chakra-ui/react"],
   },

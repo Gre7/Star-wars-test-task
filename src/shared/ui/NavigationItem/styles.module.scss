@@ -1,0 +1,32 @@
+@import "../../../app/styles/functions.scss";
+
+@mixin activeTab($color) {
+  &::after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    margin-inline: auto;
+    inset-inline: 0;
+    border-bottom: 3px solid $color;
+    border-radius: 8px;
+    top: 120%;
+    right: 0;
+  }
+}
+
+.menu {
+  &__item {
+    cursor: pointer;
+    position: relative;
+    font-size: pixels-to-rem(24);
+    color: #f6f7f9;
+    white-space: nowrap;
+
+    &:hover {
+      @include activeTab(#cfdab0);
+    }
+    &_active {
+      @include activeTab(#cfdab0);
+    }
+  }
+}

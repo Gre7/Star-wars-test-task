@@ -1,0 +1,14 @@
+$base-font-size: 16;
+
+/**
+ * Function to convert pixels to rem
+ * @param {number} $pixels - Size in pixels
+ * @param {number} $base - Base font size (optional, default $base-font-size = 16px)
+ * @return {string} - Size in rem
+ */
+@function pixels-to-rem($pixels, $base: $base-font-size) {
+  @if $base == 0 {
+    @error "Base font size cannot be zero.";
+  }
+  @return #{$pixels / $base}rem;
+}
