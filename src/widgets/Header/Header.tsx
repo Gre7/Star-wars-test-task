@@ -9,7 +9,6 @@ const Header = () => {
   return (
     <Box
       as="header"
-      position={"fixed"}
       width={"100%"}
       zIndex={10}
       background={"#1F2A63"}
@@ -20,6 +19,7 @@ const Header = () => {
         position={"relative"}
         width={"100%"}
         margin={"0 auto"}
+        height={"inherit"}
         padding={{
           base: "10px 12px 3px 16px",
           bp580: "10px 40px 3px 40px",

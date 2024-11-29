@@ -1,3 +1,4 @@
+import MainPageBanner from "@/widgets/MainPageBanner/MainPageBanner";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,5 +6,5 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <></>;
+  return <MainPageBanner />;
 }
