@@ -1,4 +1,7 @@
+import CharactersChooseFavorite from "@/widgets/CharactersChooseFavorite/CharactersChooseFavorite";
+
 const CharactersPage = () => {
-  return <>Characters</>;
+  return <CharactersChooseFavorite />;
 };
+
 export default CharactersPage;

@@ -1,0 +1,25 @@
+.person-card-badge {
+  padding: 0 18px;
+  border-radius: var(--chakra-radii-xl);
+  text-align: center;
+  color: #212121;
+  line-height: 14.06px;
+  font-weight: 400;
+  box-shadow: 0px -2px 0px 0px #0000002e inset;
+
+  &_male {
+    background: #73d677;
+  }
+
+  &_female {
+    background: #c956ff;
+  }
+
+  &_hermaphrodite {
+    background: #f5db13;
+  }
+
+  &_birthYear {
+    background: #07d6f2;
+  }
+}

@@ -1,20 +1,20 @@
-import type { Action, ThunkAction } from "@reduxjs/toolkit";
-import { combineSlices, configureStore } from "@reduxjs/toolkit";
+import generalApi from "@/state/api/initialApi";
+import { configureStore } from "@reduxjs/toolkit";
 
-const rootReducer = combineSlices();
+const store = configureStore({
+  reducer: {
+    [generalApi.reducerPath]: generalApi.reducer,
+  },
 
-export type RootState = ReturnType<typeof rootReducer>;
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(generalApi.middleware),
+});
 
 export const makeStore = () => {
-  return configureStore({
-    reducer: rootReducer,
-
-    middleware: (getDefaultMiddleware) => {
-      return getDefaultMiddleware().concat();
-    },
-  });
+  return store;
 };
 
+export type RootState = ReturnType<typeof store.getState>;
 export type AppStore = ReturnType<typeof makeStore>;
 
 export type AppDispatch = AppStore["dispatch"];

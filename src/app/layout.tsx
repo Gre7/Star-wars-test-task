@@ -6,6 +6,7 @@ import { Viewport } from "next";
 
 import "./styles/globals.scss";
 import Header from "@/widgets/Header/Header";
+import { karlaFont } from "@/app/fonts/fonts";
 
 interface Props {
   readonly children: ReactNode;
@@ -16,16 +17,10 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const karlaFont = Karla({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
 export default function RootLayout({ children }: Props) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={karlaFont.className}>
+    <html lang="en" suppressHydrationWarning className={karlaFont.className}>
+      <body>
         <Providers>
           <Header />
           <main>{children}</main>
