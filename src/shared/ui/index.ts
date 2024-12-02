@@ -1,4 +1,4 @@
-export { default as NavigationItem } from "./NavigationItem/NavigationItem";
+export { default as NavigationItem } from './NavigationItem/NavigationItem';
 export {
   SelectContent,
   SelectItem,
@@ -8,7 +8,7 @@ export {
   SelectRoot,
   SelectTrigger,
   SelectValueText,
-} from "./Select/select";
+} from './Select/Select';
 export {
   PaginationRoot,
   PaginationPrevTrigger,
@@ -17,12 +17,14 @@ export {
   PaginationPageText,
   PaginationNextTrigger,
   PaginationEllipsis,
-} from "./Pagination/Pagination";
+} from './Pagination/Pagination';
 export {
   ProgressCircleRing,
   ProgressCircleRoot,
   ProgressCircleValueText,
-} from "./ProgressCircle/ProgressCircle";
+} from './ProgressCircle/ProgressCircle';
+export { CloseButton } from './CloseButton/CloseButton';
+export * from './Dialog/Dialog';
 // Types
-export type { NavigationItemProps } from "./NavigationItem/NavigationItem";
-export type { PaginationRootProps } from "./Pagination/Pagination";
+export type { NavigationItemProps } from './NavigationItem/NavigationItem';
+export type { PaginationRootProps } from './Pagination/Pagination';

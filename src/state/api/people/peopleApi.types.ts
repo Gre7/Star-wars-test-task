@@ -1,9 +1,9 @@
-import { GetResponseWithData } from "@/customTypes/api.common";
+import { GetResponseWithData } from '@/customTypes/api.common';
 
 export enum PersonGenders {
-  Male = "male",
-  Female = "female",
-  Hermaphrodite = "hermaphrodite",
+  Male = 'male',
+  Female = 'female',
+  Hermaphrodite = 'hermaphrodite',
 }
 
 export type PersonServerModel = {
@@ -18,9 +18,4 @@ export type PersonServerModel = {
   url: string;
 };
 
-export type PersonServerModelWithId = { id: number | null } & PersonServerModel;
-
 export type GetPeopleResponse = GetResponseWithData<PersonServerModel>;
-
-export type GetPeopleResponseWithEntityId =
-  GetResponseWithData<PersonServerModelWithId>;

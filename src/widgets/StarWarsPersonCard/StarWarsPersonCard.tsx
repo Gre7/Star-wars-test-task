@@ -1,11 +1,13 @@
-import { pixelsToRem } from "@/helpers/pixelsToRem";
-import { Badge, Box, Stack, Text } from "@chakra-ui/react";
-import { robotoFont } from "@/app/fonts/fonts";
-import clsx from "clsx";
-import { PersonGenders } from "@/state/api/people/peopleApi.types";
+import { Box, Stack, Text } from '@chakra-ui/react';
 
-import RoundAnthropometryValue from "./components/RoundAnthropometryValue/RoundAnthropometryValue";
-import styles from "./styles.module.scss";
+import { robotoFont } from '@/app/fonts/fonts';
+import { pixelsToRem } from '@/helpers/pixelsToRem';
+import { startsWithNumber } from '@/helpers/validationCheck';
+import { PersonGenders } from '@/state/api/people/peopleApi.types';
+import { isGender } from '@/widgets/CharactersChooseFavorite/CharactersChooseFavorite.config';
+import PersonCardBadge from '@/widgets/StarWarsPersonCard/components/PersonCardBadge/PersonCardBadge';
+
+import RoundAnthropometryValue from './components/RoundAnthropometryValue/RoundAnthropometryValue';
 
 export type StarWarsPersonCardProps = {
   name: string;
@@ -13,6 +15,7 @@ export type StarWarsPersonCardProps = {
   mass: string;
   gender?: PersonGenders;
   birthYear?: string;
+  handleClick: () => void;
 };
 
 const StarWarsPersonCard = ({
@@ -21,56 +24,45 @@ const StarWarsPersonCard = ({
   mass,
   gender,
   birthYear,
+  handleClick,
 }: StarWarsPersonCardProps) => {
   return (
     <Box
-      background={"#F0F0F0"}
-      borderRadius={"lg"}
-      width={"100%"}
-      maxWidth={"352px"}
-      height={"136px"}
-      padding={"5px 0 12px 25px"}
+      background={'#F0F0F0'}
+      borderRadius={'lg'}
+      width={'100%'}
+      maxWidth={'352px'}
+      height={'136px'}
+      padding={'5px 0 12px 25px'}
       cursor="pointer"
+      onClick={handleClick}
     >
       <Text
-        as={"h3"}
+        as={'h3'}
         fontSize={pixelsToRem(18)}
         fontWeight={700}
-        color={"#212121"}
-        lineHeight={"21.04px"}
+        color={'#212121'}
+        lineHeight={'21.04px'}
       >
         {name}
       </Text>
-      <Stack direction={"row"} gap={"12px"} marginTop={"12px"}>
+      <Stack direction={'row'} gap={'12px'} marginTop={'12px'}>
         <RoundAnthropometryValue title="height" value={height} />
 
         <RoundAnthropometryValue title="mass" value={mass} />
       </Stack>
       <Stack
-        direction={"row"}
-        gap={"12px"}
-        marginTop={"12px"}
+        direction={'row'}
+        gap={'12px'}
+        marginTop={'12px'}
         className={robotoFont.className}
       >
-        {gender && (gender as string) !== "n/a" && (
-          <Badge
-            className={clsx(
-              styles["person-card-badge"],
-              gender && styles[`person-card-badge_${gender}`]
-            )}
-          >
-            {gender}
-          </Badge>
+        {gender && isGender(gender) && (
+          <PersonCardBadge text={gender} type={gender} />
         )}
-        {birthYear && birthYear !== "unknown" && (
-          <Badge
-            className={clsx(
-              styles["person-card-badge"],
-              gender && styles[`person-card-badge_birthYear`]
-            )}
-          >
-            {birthYear}
-          </Badge>
+
+        {birthYear && startsWithNumber(birthYear) && (
+          <PersonCardBadge text={birthYear} type={'birthYear'} />
         )}
       </Stack>
     </Box>

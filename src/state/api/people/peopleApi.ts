@@ -1,26 +1,14 @@
-import { webApi } from "@/state/api/apiPaths";
-import generalApi from "@/state/api/initialApi";
-import {
-  GetPeopleResponse,
-  GetPeopleResponseWithEntityId,
-} from "@/state/api/people/peopleApi.types";
-import { parseIdFromUrl } from "@/helpers/parseIdFromUrl";
+import { webApi } from '@/state/api/apiPaths';
+import generalApi from '@/state/api/initialApi';
+import { GetPeopleResponse } from '@/state/api/people/peopleApi.types';
 
 export const peopleApi = generalApi.injectEndpoints({
   endpoints: (builder) => ({
-    getPeople: builder.query<GetPeopleResponseWithEntityId, number>({
+    getPeople: builder.query<GetPeopleResponse, number>({
       query: (page) => {
         return {
           url: `${webApi.starWars.getPeopleUrl}?page=${page}`,
         };
-      },
-      transformResponse: (res: GetPeopleResponse) => {
-        const transformedResults = res.results.map((elem) => ({
-          ...elem,
-          id: parseIdFromUrl(elem.url),
-        }));
-
-        return { ...res, results: transformedResults };
       },
     }),
   }),
