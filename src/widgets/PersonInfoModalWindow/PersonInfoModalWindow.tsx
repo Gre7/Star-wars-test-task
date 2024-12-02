@@ -19,7 +19,6 @@ import RoundAnthropometryValue from '@/widgets/StarWarsPersonCard/components/Rou
 
 import CharacteristicText from './components/CharacteristicText/CharacteristicText';
 
-
 export type PersonInfoModalWindow = {
   isOpen: boolean;
   handleCloseDialog: () => void;
@@ -128,10 +127,16 @@ const PersonInfoModalWindow = ({
                 'linear-gradient(180deg, #17002F 42.19%, #1F2A63 100%)'
               }
               padding={'30px 75px 25px 14px'}
-              borderTopRightRadius={'lg'}
-              borderBottomRightRadius={'lg'}
-              borderTopLeftRadius={!isGenderOrBirth ? 'lg' : 'none'}
-              borderBottomLeftRadius={!isGenderOrBirth ? 'lg' : 'none'}
+              borderTopRightRadius={{ base: 'none', bp580: 'lg' }}
+              borderBottomRightRadius={{ base: 'none', bp580: 'lg' }}
+              borderTopLeftRadius={{
+                base: 'none',
+                bp580: !isGenderOrBirth ? 'lg' : 'none',
+              }}
+              borderBottomLeftRadius={{
+                base: 'none',
+                bp580: !isGenderOrBirth ? 'lg' : 'none',
+              }}
             >
               <Text
                 fontSize={pixelsToRem(36)}
