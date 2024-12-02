@@ -1,5 +1,6 @@
-import generalApi from "@/state/api/initialApi";
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
+
+import generalApi from '@/state/api/initialApi';
 
 const store = configureStore({
   reducer: {
@@ -17,4 +18,4 @@ export const makeStore = () => {
 export type RootState = ReturnType<typeof store.getState>;
 export type AppStore = ReturnType<typeof makeStore>;
 
-export type AppDispatch = AppStore["dispatch"];
+export type AppDispatch = AppStore['dispatch'];

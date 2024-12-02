@@ -1,16 +1,16 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /** @type {import('next').NextConfig} */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const path = require("path");
+const path = require('path');
 
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   experimental: {
-    optimizePackageImports: ["@chakra-ui/react"],
+    optimizePackageImports: ['@chakra-ui/react'],
   },
   sassOptions: {
-    includePaths: [path.join(__dirname, "styles")],
+    includePaths: [path.join(__dirname, 'styles')],
   },
 };
 

@@ -1,12 +1,14 @@
+import { Dispatch, SetStateAction } from 'react';
+
+import { HStack } from '@chakra-ui/react';
+
 import {
   PaginationItems,
   PaginationNextTrigger,
   PaginationPrevTrigger,
   PaginationRoot,
-} from "@/shared/ui";
-import { HStack } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
-import { PaginationRootProps } from "@/shared/ui/index";
+} from '@/shared/ui';
+import { PaginationRootProps } from '@/shared/ui/index';
 
 export type SimplePaginationProps = {
   page: number;

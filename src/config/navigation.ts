@@ -4,11 +4,11 @@ export type NavigationItemType = {
 };
 
 export const NavigationPageUrls = {
-  HomePage: "/",
-  CharactersPage: "/characters/",
+  HomePage: '/',
+  CharactersPage: '/characters/',
 };
 
 export const PageRoutes: NavigationItemType[] = [
-  { title: "Home", href: NavigationPageUrls.HomePage },
-  { title: "Characters", href: NavigationPageUrls.CharactersPage },
+  { title: 'Home', href: NavigationPageUrls.HomePage },
+  { title: 'Characters', href: NavigationPageUrls.CharactersPage },
 ];

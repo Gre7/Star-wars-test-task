@@ -1,19 +1,18 @@
-import type { ReactNode } from "react";
-import { Karla } from "next/font/google";
+import type { ReactNode } from 'react';
 
-import { Providers } from "@/app/providers";
-import { Viewport } from "next";
+import { Viewport } from 'next';
 
-import "./styles/globals.scss";
-import Header from "@/widgets/Header/Header";
-import { karlaFont } from "@/app/fonts/fonts";
+import { karlaFont } from '@/app/fonts/fonts';
+import { Providers } from '@/app/providers';
+import Header from '@/widgets/Header/Header';
+import './styles/globals.scss';
 
 interface Props {
   readonly children: ReactNode;
 }
 
 export const viewport: Viewport = {
-  width: "device-width",
+  width: 'device-width',
   initialScale: 1,
 };
 

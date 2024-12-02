@@ -1,6 +1,6 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const BASE_URL = "https://swapi.dev/api";
+export const BASE_URL = 'https://swapi.dev/api';
 
 const generalApi = createApi({
   tagTypes: [],

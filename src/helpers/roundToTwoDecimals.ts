@@ -1,7 +1,8 @@
 export const roundToTwoDecimals = (input: string): number | null => {
-  const normalizedInput = input.replace(",", ".");
+  const normalizedInput = input.replace(',', '.');
 
   const number = parseFloat(normalizedInput);
+
   if (isNaN(number)) {
     return null;
   }

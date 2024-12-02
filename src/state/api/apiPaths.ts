@@ -1,5 +1,5 @@
 export const webApi = {
   starWars: {
-    getPeopleUrl: "/people",
+    getPeopleUrl: '/people',
   },
 };

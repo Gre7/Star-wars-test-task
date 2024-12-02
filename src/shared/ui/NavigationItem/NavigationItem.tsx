@@ -1,11 +1,13 @@
-"use client";
-import { Box, BoxProps } from "@chakra-ui/react";
-import clsx from "clsx";
+'use client';
+import { useEffect, useState } from 'react';
 
-import styles from "./styles.module.scss";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Box, BoxProps } from '@chakra-ui/react';
+import clsx from 'clsx';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import styles from './styles.module.scss';
+
 
 export type NavigationItemProps = {
   title: string;
@@ -25,8 +27,8 @@ const NavigationItem = ({ title, href, navItemProps }: NavigationItemProps) => {
     <Box
       asChild
       className={clsx(
-        styles["menu__item"],
-        isActiveRouteItem && styles["menu__item_active"]
+        styles['menu__item'],
+        isActiveRouteItem && styles['menu__item_active'],
       )}
       {...navItemProps}
     >

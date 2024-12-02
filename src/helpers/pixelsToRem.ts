@@ -7,7 +7,7 @@
  */
 export function pixelsToRem(pixels: number, baseFontSize: number = 16): string {
   if (baseFontSize <= 0) {
-    throw new Error("Base font size must be greater than zero.");
+    throw new Error('Base font size must be greater than zero.');
   }
   return `${pixels / baseFontSize}rem`;
 }
