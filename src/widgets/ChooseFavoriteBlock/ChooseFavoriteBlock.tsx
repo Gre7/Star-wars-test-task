@@ -1,16 +1,11 @@
 'use client';
 import { useMemo, useState } from 'react';
 
-import {
-  Box,
-  Center,
-  Container,
-  SimpleGrid,
-  Stack,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Center, Container, Stack, Text } from '@chakra-ui/react';
 
 import { source_Sans_3 } from '@/app/fonts/fonts';
+import PeopleList from '@/features/PeopleList/PeopleList';
+import PersonInfoModalWindow from '@/features/PersonInfoModalWindow/PersonInfoModalWindow';
 import { pixelsToRem } from '@/helpers/pixelsToRem';
 import {
   ProgressCircleRing,
@@ -27,24 +22,25 @@ import { PersonServerModel } from '@/state/api/people/peopleApi.types';
 import {
   ColorEyeValues,
   frameworks,
-} from '@/widgets/CharactersChooseFavorite/CharactersChooseFavorite.config';
-import PersonInfoModalWindow from '@/widgets/PersonInfoModalWindow/PersonInfoModalWindow';
+} from '@/widgets/ChooseFavoriteBlock/ChooseFavoriteBlock.config';
 import SimplePagination from '@/widgets/SimplePagination/SimplePagination';
-import StarWarsPersonCard from '@/widgets/StarWarsPersonCard/StarWarsPersonCard';
 
 // ?NOTE: фильтрация персонажей реализована в компоненте для каждой страницы, а не для всех, чтобы фильтровать все элементы с учетом пагинации, необходима поддержка бека
-const CharactersChooseFavorite = () => {
+const ChooseFavoriteBlock = () => {
   // Local State
   const [page, setPage] = useState<number>(1);
   const [colorEye, setColorEye] = useState<ColorEyeValues>(ColorEyeValues.All);
 
-  const [isOpenDialog, setIsOpenDialog] = useState(true);
   const [currentPerson, setCurrentPerson] = useState<PersonServerModel | null>(
     null,
   );
 
   // API
-  const { data: fetchedStarWarsPeople, isLoading } = useGetPeopleQuery(page);
+  const {
+    data: fetchedStarWarsPeople,
+    isLoading,
+    isError,
+  } = useGetPeopleQuery(page);
 
   // Handlers
   const handleChangeColorEyeSelect = (newValue: ColorEyeValues) => {
@@ -53,12 +49,10 @@ const CharactersChooseFavorite = () => {
 
   const handleOpenDialog = (personEntity: PersonServerModel) => {
     setCurrentPerson(personEntity);
-
-    setIsOpenDialog(true);
   };
 
   const handleCloseDialog = () => {
-    setIsOpenDialog(false);
+    setCurrentPerson(null);
   };
 
   const filteredPeopleByColorEyes = useMemo(() => {
@@ -67,7 +61,7 @@ const CharactersChooseFavorite = () => {
       !fetchedStarWarsPeople.results ||
       fetchedStarWarsPeople.results.length === 0
     )
-      return;
+      return [];
 
     if (colorEye === ColorEyeValues.All) return fetchedStarWarsPeople.results;
 
@@ -75,6 +69,8 @@ const CharactersChooseFavorite = () => {
       (elem) => elem.eye_color === colorEye,
     );
   }, [fetchedStarWarsPeople, colorEye]);
+
+  // Layout
 
   if (isLoading)
     return (
@@ -85,20 +81,16 @@ const CharactersChooseFavorite = () => {
       </Center>
     );
 
-  // Layout
-  const personCards = () => {
-    return filteredPeopleByColorEyes?.map((elem) => (
-      <StarWarsPersonCard
-        key={elem.url}
-        name={elem.name}
-        height={elem.height}
-        mass={elem.mass}
-        gender={elem.gender}
-        birthYear={elem.birth_year}
-        handleClick={() => handleOpenDialog(elem)}
-      />
-    ));
-  };
+  if (isError) {
+    return (
+      <Center height={'100%'}>
+        <Text fontSize={pixelsToRem(32)} color={'#000000'}>
+          Failed to load data. Please try again later.
+        </Text>
+      </Center>
+    );
+  }
+
   return (
     <Box>
       <Container
@@ -196,30 +188,14 @@ const CharactersChooseFavorite = () => {
             />
           )}
         </Stack>
-        {filteredPeopleByColorEyes && filteredPeopleByColorEyes.length !== 0 ? (
-          <SimpleGrid
-            columns={{ base: 1, bp768: 2, bp1024: 3 }}
-            columnGap="42px"
-            justifyItems={'center'}
-            rowGap="32px"
-            marginTop={'30px'}
-          >
-            {personCards()}
-          </SimpleGrid>
-        ) : (
-          <Text
-            fontSize={pixelsToRem(30)}
-            fontWeight={700}
-            textAlign={'center'}
-            marginTop={'120px'}
-          >
-            Oops, no character with that eye color found on current page
-          </Text>
-        )}
+        <PeopleList
+          items={filteredPeopleByColorEyes}
+          handleItemClick={handleOpenDialog}
+        />
       </Container>
       {currentPerson && (
         <PersonInfoModalWindow
-          isOpen={isOpenDialog}
+          isOpen={!!currentPerson}
           handleCloseDialog={handleCloseDialog}
           {...currentPerson}
         />
@@ -228,4 +204,4 @@ const CharactersChooseFavorite = () => {
   );
 };
 
-export default CharactersChooseFavorite;
+export default ChooseFavoriteBlock;

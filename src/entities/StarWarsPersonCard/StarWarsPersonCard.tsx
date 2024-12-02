@@ -4,9 +4,9 @@ import { robotoFont } from '@/app/fonts/fonts';
 import { pixelsToRem } from '@/helpers/pixelsToRem';
 import { startsWithNumber } from '@/helpers/validationCheck';
 import { PersonGenders } from '@/state/api/people/peopleApi.types';
-import { isGender } from '@/widgets/CharactersChooseFavorite/CharactersChooseFavorite.config';
-import PersonCardBadge from '@/widgets/StarWarsPersonCard/components/PersonCardBadge/PersonCardBadge';
+import { isGender } from '@/widgets/ChooseFavoriteBlock/ChooseFavoriteBlock.config';
 
+import PersonCardBadge from './components/PersonCardBadge/PersonCardBadge';
 import RoundAnthropometryValue from './components/RoundAnthropometryValue/RoundAnthropometryValue';
 
 export type StarWarsPersonCardProps = {

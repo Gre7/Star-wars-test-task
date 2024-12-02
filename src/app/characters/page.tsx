@@ -1,9 +1,9 @@
-import CharactersChooseFavorite from '@/widgets/CharactersChooseFavorite/CharactersChooseFavorite';
+import ChooseFavoriteBlock from '@/widgets/ChooseFavoriteBlock/ChooseFavoriteBlock';
 
 const CharactersPage = () => {
   return (
     <>
-      <CharactersChooseFavorite />
+      <ChooseFavoriteBlock />
     </>
   );
 };

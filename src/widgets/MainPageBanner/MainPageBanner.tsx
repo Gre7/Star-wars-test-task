@@ -29,9 +29,9 @@ const MainPageBanner = () => {
             marginTop={'60px'}
           >
             <Text
-              fontSize={pixelsToRem(72)}
+              fontSize={{ base: pixelsToRem(32), bp768: pixelsToRem(72) }}
               fontWeight={700}
-              lineHeight={'84.17px'}
+              lineHeight={'130%'}
               letterSpacing={'4px'}
               color={'white'}
               as={'h1'}
@@ -43,11 +43,12 @@ const MainPageBanner = () => {
               character
             </Text>
             <Text
-              fontSize={pixelsToRem(32)}
+              fontSize={{ base: pixelsToRem(20), bp768: pixelsToRem(32) }}
               fontWeight={400}
-              lineHeight={'37.41px'}
+              lineHeight={'130%'}
               color={'white'}
               as={'h2'}
+              maxWidth={'498px'}
             >
               You can find out all the information about your favorite
               characters

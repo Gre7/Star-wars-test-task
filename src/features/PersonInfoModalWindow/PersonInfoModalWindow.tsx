@@ -4,6 +4,8 @@ import { Box, Image, Stack, Text } from '@chakra-ui/react';
 
 import { robotoFont } from '@/app/fonts/fonts';
 import { CloseIcon } from '@/assets/icons';
+import PersonCardBadge from '@/entities/StarWarsPersonCard/components/PersonCardBadge/PersonCardBadge';
+import RoundAnthropometryValue from '@/entities/StarWarsPersonCard/components/RoundAnthropometryValue/RoundAnthropometryValue';
 import { pixelsToRem } from '@/helpers/pixelsToRem';
 import { startsWithNumber } from '@/helpers/validationCheck';
 import {
@@ -13,9 +15,7 @@ import {
   DialogRoot,
 } from '@/shared/ui';
 import { PersonServerModel } from '@/state/api/people/peopleApi.types';
-import { isGender } from '@/widgets/CharactersChooseFavorite/CharactersChooseFavorite.config';
-import PersonCardBadge from '@/widgets/StarWarsPersonCard/components/PersonCardBadge/PersonCardBadge';
-import RoundAnthropometryValue from '@/widgets/StarWarsPersonCard/components/RoundAnthropometryValue/RoundAnthropometryValue';
+import { isGender } from '@/widgets/ChooseFavoriteBlock/ChooseFavoriteBlock.config';
 
 import CharacteristicText from './components/CharacteristicText/CharacteristicText';
 
@@ -87,8 +87,12 @@ const PersonInfoModalWindow = ({
       size={{ base: 'sm', bp768: 'lg', bp1024: 'xl' }}
     >
       <DialogContent maxWidth={'796px'}>
-        <DialogBody width={'100%'} maxWidth={'796px'}>
-          <Stack direction={{ base: 'column-reverse', bp580: 'row' }} gap={0}>
+        <DialogBody width={'100%'}>
+          <Stack
+            direction={{ base: 'column-reverse', bp580: 'row' }}
+            gap={0}
+            minHeight={'370px'}
+          >
             {isGenderOrBirth && (
               <Box
                 width={{ base: '100%', bp580: '45%' }}
@@ -126,6 +130,7 @@ const PersonInfoModalWindow = ({
               background={
                 'linear-gradient(180deg, #17002F 42.19%, #1F2A63 100%)'
               }
+              minHeight={'370px'}
               padding={'30px 75px 25px 14px'}
               borderTopRightRadius={{ base: 'none', bp580: 'lg' }}
               borderBottomRightRadius={{ base: 'none', bp580: 'lg' }}
